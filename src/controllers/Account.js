@@ -25,12 +25,12 @@ var login = function (req, res) {
         });
     }
 
-    Account.AccountModel.generateHash(req.body.username, req.body.pass, function (err, account) {
+    Account.AccountModel.authenticate(req.body.username, req.body.pass, function (err, account) {
 
         if (err || !account) {
             console.log(err);
             return res.status(401).json({
-                err: "Incorrect username or password"
+                err: "RAWR! Incorrect username or password"
             }); //if error, return it
         }
 
